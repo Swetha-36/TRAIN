@@ -26,28 +26,9 @@ JSON Handling	Jackson ObjectMapper
 Security	Password hashing
 Utilities	Java Streams, Optional, UUID
 Input	Scanner
-📁 Project Structure
-ticket.booking
-│
-├── App.java                     # Application entry point
-│
-├── entities
-│   ├── User.java                # User model
-│   ├── Trains.java              # Train model
-│   └── Ticket.java              # Ticket model
-│
-├── service
-│   ├── UserBookingService.java  # User & booking logic
-│   └── TrainService.java        # Train search & seat management
-│
-├── util
-│   └── UserServiceUtil.java     # Password hashing & verification
-│
-└── localDb
-    ├── users.json               # Stores user data
-    └── trains.json              # Stores train & seat data
 
 ⚙️ Functional Overview
+
 1️⃣ User Signup
 
 Accepts username and password
@@ -87,6 +68,7 @@ Cancels ticket using Ticket ID
 Updates user booking records
 
 🧠 Design Decisions (Why This Approach?)
+
 🔹 Why JSON Instead of Database?
 
 Beginner-friendly
@@ -111,14 +93,6 @@ Prevents security vulnerabilities
 
 Teaches backend security fundamentals
 
-🔄 Application Flow
-App.java (Controller)
-   ↓
-UserBookingService / TrainService (Business Logic)
-   ↓
-Entities (User, Train, Ticket)
-   ↓
-JSON Files (Persistence Layer)
 
 ▶️ How to Run
 
