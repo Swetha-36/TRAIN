@@ -16,11 +16,11 @@ import java.util.*;
 
 public class UserBookingService{
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper(); //Used to convert JSON ↔ Java Objects
 
-    private List<User> userList;
+    private List<User> userList;//Holds all registered users , Loaded from users.json
 
-    private User user;
+    private User user;//Represents the currently logged-in user , Used for login, bookings, cancellation
 
     private final String USER_FILE_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
 
@@ -38,8 +38,9 @@ public class UserBookingService{
     }
 
     public Boolean loginUser(){ //to find already registered user if name and password are matched
-        Optional<User> foundUser = userList.stream().filter(user1 -> {
-            return user1.getName().equals(user.getName()) && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
+        Optional<User> foundUser = userList.stream().filter(user1 -> { //optionals are used so that are no null pointer
+            return user1.getName().equals(user.getName()) //checks if user name matches
+                    && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword()); //checks the password after hashing from the hashed password which is done using util
         }).findFirst();
         return foundUser.isPresent();//If a value is present, returns true, otherwise false , we use optionals to avoid null pointers
     }
