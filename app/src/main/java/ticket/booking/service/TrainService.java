@@ -23,7 +23,8 @@ public class TrainService {
     }
 
     public List<Trains> searchTrains(String source, String destination) {
-        return trainList.stream().filter(train -> validTrain(train, source, destination)).collect(Collectors.toList());
+        return trainList.stream().filter(train -> validTrain(train, source, destination))
+                .collect(Collectors.toList());
     }
 
     public void addTrain(Trains newTrain) {
